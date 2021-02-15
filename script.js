@@ -45,7 +45,7 @@ function generatePassword() {
     }
     // Number Addition Confirmation
     if (
-      confirm("Would you like numbers characters included in your password?")
+      confirm("Would you like number characters included in your password?")
     ) {
       passwordList += numberChar;
       console.log(passwordList);

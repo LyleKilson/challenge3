@@ -18,7 +18,9 @@ function generatePassword() {
   var passwordLength = prompt(
     "Your password may be between 8 and 128 characters. How many characters would you like your password to consist of?"
   );
+  var passwordType = parseInt(passwordLength);
   if (
+    isNaN(passwordType) === true ||
     passwordLength < 8 ||
     passwordLength > 128 ||
     passwordLength === null ||
@@ -28,8 +30,9 @@ function generatePassword() {
       "Invalid entry. Please click the 'Generate Password' button and try again."
     );
     return;
-  } else {
+  } else { 
     console.log(passwordLength);
+    console.log(isNaN(passwordType));
 
     // Special Character Addition Confirmation
     if (
@@ -77,10 +80,12 @@ function generatePassword() {
         var mixItUp = Math.floor(Math.random() * passwordList.length);
         finalPass = finalPass + passwordList[mixItUp];
       }
+      console.log(finalPass);
     }
     // Write password in password input
     var passwordText = document.querySelector("#password");
     passwordText.value = finalPass;
   }
+
 }
 generateBtn.addEventListener("click", generatePassword);

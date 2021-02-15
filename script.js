@@ -7,12 +7,6 @@ var numberChar = "123456789";
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-// Variable String Arrays
-var specialCharArr = specialChar.split("");
-var numberCharArr = numberChar.split("");
-var lowercaseCharArr = lowercaseChar.split("");
-var uppercaseCharArr = uppercaseChar.split("");
-
 // Main
 function generatePassword() {
   // Password Criteria Input Array
@@ -43,14 +37,14 @@ function generatePassword() {
         "Would you like special characters included in your password?\n(e.g !@#$%^&*()_-+={}[];:'`~<,>.?/|)"
       )
     ) {
-      passwordList = passwordList + specialCharArr;
+      passwordList += specialChar;
       console.log(passwordList);
     }
     // Number Addition Confirmation
     if (
       confirm("Would you like numbers characters included in your password?")
     ) {
-      passwordList = passwordList +  lowercaseCharArr;
+      passwordList += numberChar;
       console.log(passwordList);
     }
     // Lowercase Addition Confirmation
@@ -59,7 +53,7 @@ function generatePassword() {
         "Would you like lowercase letter characters included in your password?"
       )
     ) {
-      passwordList = passwordList + lowercaseCharArr;
+      passwordList += lowercaseChar;
       console.log(passwordList);
     }
     // Uppercase Addition Confirmation
@@ -68,7 +62,7 @@ function generatePassword() {
         "Would you like uppercase letter characters included in your password?"
       )
     ) {
-      passwordList = passwordList +  uppercaseCharArr;
+      passwordList += uppercaseChar;
       console.log(passwordList);
     }
     // If no criteria selected start over

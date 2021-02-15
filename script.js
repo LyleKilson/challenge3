@@ -1,12 +1,13 @@
-//Button click
+//Button Click
 var generateBtn = document.querySelector("#generate");
-// Static Password Input Variables
+
+// Variable Strings
 var specialChar = "!@#$%^&*()_-+={}[];:'`~<,>.?/|";
 var numberChar = "123456789";
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-// Static Input Variable Arrays
+// Variable String Arrays
 var specialCharArr = specialChar.split("");
 var numberCharArr = numberChar.split("");
 var lowercaseCharArr = lowercaseChar.split("");
@@ -14,27 +15,76 @@ var uppercaseCharArr = uppercaseChar.split("");
 
 // Main
 function generatePassword() {
-  //Input list for Variable Arrays
-  var passwordlist = [];
+  // Password Criteria Input Array
+  var passwordList = [];
+  // Final Password Variable
+  var finalPass = "";
 
-  // Write password to the #password input
-  var passwordLength = prompt("Your password may be between 8 and 128 characters. How many characters would you like your password to consist of?");
+  // Password Length Input
+  var passwordLength = prompt(
+    "Your password may be between 8 and 128 characters. How many characters would you like your password to consist of?"
+  );
+  if (
+    passwordLength < 8 ||
+    passwordLength > 128 ||
+    passwordLength === null ||
+    passwordLength === ""
+  ) {
+    alert(
+      "Invalid entry. Please click the 'Generate Password' button and try again."
+    );
+    return;
+  } else {
+    console.log(passwordLength);
+
+    // Special Character Addition Confirmation
     if (
-      passwordLength < 8 ||
-      passwordLength > 128 ||
-      passwordLength === null ||
-      passwordLength === ""
+      confirm(
+        "Would you like special characters included in your password?\n(e.g !@#$%^&*()_-+={}[];:'`~<,>.?/|)"
+      )
     ) {
-      window.alert(
-        "Invalid entry. Please click the 'Generate Password' button and try again."
-      );
-      return;
-
-    } else {
-      console.log(passwordLength);
-      if (confirm("Would you like special characters included in your password?\n(e.g !@#$%^&*()_-+={}[];:'`~<,>.?/|)"));
-    
+      passwordList = passwordList + specialCharArr;
+      console.log(passwordList);
     }
+    // Number Addition Confirmation
+    if (
+      confirm("Would you like numbers characters included in your password?")
+    ) {
+      passwordList = passwordList +  lowercaseCharArr;
+      console.log(passwordList);
+    }
+    // Lowercase Addition Confirmation
+    if (
+      confirm(
+        "Would you like lowercase letter characters included in your password?"
+      )
+    ) {
+      passwordList = passwordList + lowercaseCharArr;
+      console.log(passwordList);
+    }
+    // Uppercase Addition Confirmation
+    if (
+      confirm(
+        "Would you like uppercase letter characters included in your password?"
+      )
+    ) {
+      passwordList = passwordList +  uppercaseCharArr;
+      console.log(passwordList);
+    }
+    // If no criteria selected start over
+    if (passwordList.length === 0) {
+      alert(
+        "To meet the security requirments for generating a new password you must select at least one character category"
+      );
+      alert("Please click the 'Generate Password' button and try again.");
+      // Generate Random Password according to selected criteria
+    } else {
+      for (var i = 0; i < passwordLength; i = i + 1) {
+        var mixItUp = Math.floor(Math.random() * passwordList.length);
+        finalPass = finalPass + passwordList[mixItUp];
+        console.log(finalPass);
+      }
+    }
+  }
 }
-
-  
+generateBtn.addEventListener("click", generatePassword);

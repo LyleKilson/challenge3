@@ -77,7 +77,6 @@ function generatePassword() {
         var mixItUp = Math.floor(Math.random() * passwordList.length);
         finalPass = finalPass + passwordList[mixItUp];
       }
-      console.log(finalPass);
     }
     // Write password in password input
     var passwordText = document.querySelector("#password");

@@ -80,5 +80,6 @@ function generatePassword() {
       }
     }
   }
+  // Write password in password input
 }
 generateBtn.addEventListener("click", generatePassword);

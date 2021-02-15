@@ -76,10 +76,12 @@ function generatePassword() {
       for (var i = 0; i < passwordLength; i = i + 1) {
         var mixItUp = Math.floor(Math.random() * passwordList.length);
         finalPass = finalPass + passwordList[mixItUp];
-        console.log(finalPass);
       }
+      console.log(finalPass);
     }
+    // Write password in password input
+    var passwordText = document.querySelector("#password");
+    passwordText.value = finalPass;
   }
-  // Write password in password input
 }
 generateBtn.addEventListener("click", generatePassword);
